@@ -2,7 +2,7 @@
 
 This is a Multi-Page Application created with MEN stack.
 
-In this project you can appreciate my skills as a backend developer. 
+In this project you can appreciate my skills as a backend developer and my frontend skills for creating multi-page applications without using any framework. 
 
 [#Live demo](https://aleksei-dev-app.herokuapp.com)
 
