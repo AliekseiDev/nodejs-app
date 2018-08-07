@@ -1,0 +1,54 @@
+extends layout
+
+include mixins/admin/_review
+include mixins/admin/_storeCard
+
+block append styles
+  link(rel='stylesheet', href='/dist/style.Superrights.css')
+
+block content
+  .inner
+    h2= title
+    .complaints
+      if !complaints.length
+        p Empty
+      
+      each complaint in complaints
+      
+        - let itemInfo = {}
+        if complaint.store === null
+          - itemInfo.storeDeleted = true
+        if complaint.review === null
+          - itemInfo.reviewDeleted = true
+        
+        .complaint
+          .info-box
+            .complaint_info
+              a.author(href=`/author/${complaint.author.link}`)= complaint.author.name
+              time.review__time(datetime=complaint.created)= h.moment(complaint.created).format('LLL')
+            
+            if !itemInfo.storeDeleted
+              a.store_link(href=`/store/${complaint.store.slug}`)= complaint.store.name
+            else
+              span.store_link [STORE DELETED]
+
+            if itemInfo.reviewDeleted || itemInfo.storeDeleted
+              div The complaint was about #{complaint.kind}.
+              br
+            .description= complaint.description
+          
+          .item
+            if complaint.review
+              +review_admin(complaint.review)
+            else if complaint.store 
+              +storeCard(complaint.store)
+          .controls
+            if (!(itemInfo.storeDeleted || itemInfo.reviewDeleted))
+              a.control(data-action="delete", data-type="item-info", href=`/api/v1/${complaint.kind}s/${complaint[complaint.kind]._id}/remove`) Delete #{complaint.kind}
+            a.control(data-action="delete", href=`/api/v1/complaints/${complaint._id}/remove`) Delete complaint
+            if (!(itemInfo.storeDeleted || itemInfo.reviewDeleted))
+              a.control(data-action="update", href=`/api/v1/${complaint.kind}s/${complaint[complaint.kind]._id}/update`) Update        
+
+
+block append scripts
+  script(src="/dist/Superrights.bundle.js")

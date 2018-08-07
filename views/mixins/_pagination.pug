@@ -1,0 +1,15 @@
+mixin pagination(path, page, pages, count)
+
+  .pagination
+
+    .pagination__text
+      p Page #{page} of #{pages} - #{count} total results
+
+    .pagination__controls
+      if page > 1
+        .pagination__prev
+          a(href=`${path}/page/${page - 1}`) Prev
+
+      if page < pages
+        .pagination__next
+          a(href=`${path}/page/${parseInt(page) + 1}`) Next

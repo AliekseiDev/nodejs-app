@@ -1,0 +1,10 @@
+mixin storeCard( store = {} )
+
+  .store_changeable
+    .store_photo-wrapper
+      div(style=`background-image: url(/uploads/${store.photo || 'store.png'});`)
+    form.store_info(action="", onsubmit="return false")
+      p Title
+      input(type="text", name="name", value=store.name, required)
+      p Description
+      textarea(name="description")= store.description

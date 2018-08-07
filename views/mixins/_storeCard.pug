@@ -1,0 +1,34 @@
+mixin storeCard( store = {} )
+
+  .store.prnt.prnt-modal
+    .store__hero
+      .store__actions
+        if user
+          .store__action.store__action--heart
+            form.heart.action--form(method="POST", action=`/api/v1/stores/${store._id}/heart`)
+              - let heartStrings = user.hearts.stores.map(obj => obj.toString())
+              - let heartClass = heartStrings.includes(store._id.toString()) ? 'action--form__button--hearted' : ''
+
+              button.action--form__button(type="submit", name="heart", class=heartClass)
+                != h.icon('heart')  
+
+        if user && store.author.equals(user._id) 
+          .store__action.store__action--edit
+            a(href=`/stores/${store._id}/edit`)
+              != h.icon('pencil')
+          .store__action.store__action--remove
+            a.remove_store(href=`/api/v1/stores/${store._id}/remove`, data-modal-form="#remove-store")
+              != h.icon('garbage')
+
+        if store.reviews
+          .store__action.store__action--count
+            != h.icon('review')
+            span= store.reviews.length
+
+      img(src=`/uploads/${store.photo || 'store.png'}`)
+      h2.title
+       a(href=`/store/${store.slug}`) #{store.name}
+    .store__details
+      p= store.description.split(' ').slice(0, 25).join(' ')
+    .complain
+      a(href=`/stores/${store._id}/complain`) Complain

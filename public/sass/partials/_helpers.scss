@@ -1,0 +1,53 @@
+.hide {
+  text-indent: -999999px;
+  font-size: 0;
+}
+
+.button {
+  border: 0;
+  background: $yellow;
+  color: $black;
+  font-family: 'Panama';
+  font-weight: 600;
+}
+
+.avatar {
+ min-width: 50px;
+ height: 50px;
+ border-radius: 50%;
+ align-self: center;
+}
+
+.card {
+  background: white;
+  padding: 5rem;
+  box-shadow: 0 1px 10px rgba(0,0,0,0.15);
+}
+
+.prnt{
+  position: relative;
+  &.deleted{
+    opacity: .1;
+    pointer-events: none;
+  }
+  .error{
+    position: absolute;
+    background: red;
+    color: #fff;
+    display: block;
+    width: 85%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 10;
+    border-radius: 10px;
+  }
+}
+
+pre.error {
+  padding: 5rem;
+  background: white;
+  line-height: 3;
+  white-space: pre-line;
+}

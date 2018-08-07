@@ -1,0 +1,151 @@
+.complaint{
+  position: relative;
+  &.deleted, .deleted{
+    opacity: .3;
+    pointer-events: none;
+  }
+  &.loading{
+    animation: loading 1s infinite;
+    pointer-events: none;
+  }
+  .status{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: rgb(95, 95, 95);
+    border-radius: 5px;
+    padding: 7px;
+    color: #fff;
+    display: inline-block;
+    max-width: 85%;
+    &.done{
+      background: green;
+    }
+    &.process{
+      background: rgb(2, 153, 223);
+    }
+    &.bad{
+      background: red;
+    }
+  }
+  transition: opacity .3s;
+  margin-bottom: 20px;
+  .info-box{
+    padding: 10px 15px 10px;
+    background: #fff;
+    position: relative;
+    top: 5px;
+    transition: transform .2s;
+    border-radius: 10px 10px 0 0;
+    .author{
+      font-weight: bold;
+      padding-right: 10px;
+      padding-bottom: 7px;
+    }
+  }
+  &_info{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 5px 5px 10px;
+  }
+  .controls{
+    display: flex;
+    border-radius: 0 0 10px 10px;
+    text-align: center;
+    background: #fff;
+    overflow: hidden;
+    .control{
+      flex-grow: 1;
+      padding: 20px 5px;
+      &:hover{
+        background: $grey;
+      }
+    }
+  }
+
+  .store{
+    &_changeable{
+      background: #ffffff;
+      display: flex;
+      flex-wrap: wrap;
+      padding: 10px;
+      position: relative;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    &_photo-wrapper{
+      padding: 10px;
+      padding-right: 20px;
+      div{
+        width: 100px;
+        height: 100px;
+        background-size: cover;
+        background-position: center;
+        border-radius: 10px;
+      }
+    }
+    &_info{
+      flex-grow: 1;
+      p{
+        line-height: 1;
+        font-size: 12px;
+      }
+      textarea{
+        height: 75px;
+      }
+    }
+  }
+
+  .store_link{
+    background: $yellow;
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    display: inline-block;
+  }
+  &:hover{
+    .info-box{
+      transform: translateY(-5px);
+    }
+  }
+
+  @media all and (max-width: 450px) {
+    .store_photo-wrapper{
+      width: 100%;
+      div{
+        margin: 0 auto;
+      }
+    }
+    .controls{
+      flex-direction: column;
+      .control{
+        padding: 7px;
+      }
+    }
+  }
+}
+
+@keyframes loading{
+  0%{
+    opacity: 1;
+  }
+  50%{
+    opacity: .5;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
+form{
+  .review{
+    margin-bottom: 0;
+    &__header {
+      & > * {
+        padding: 5px;
+      }
+    }
+    
+  }
+}

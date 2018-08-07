@@ -1,0 +1,51 @@
+input, textarea {
+  width:100%;
+  resize: vertical;
+  padding:10px;
+  border: 1px solid $grey;
+  &.input {
+    &--error {
+      border-color: red;
+    }
+  }
+}
+
+label {
+  padding: 10px 0;
+  display: block;
+}
+
+.form {
+  background: white;
+  padding: 2rem;
+  box-shadow: $grad;
+  & + .form {
+    margin-top: 4rem;
+  }
+  // I know this isn't bem but meh
+  h2 {
+    margin: 0;
+    font-size: 2rem;
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid $grey;
+  }
+}
+
+#remove-store{
+  text-align: center;
+}
+#remove-review{
+  text-align: center;
+}
+
+#complain{
+  text-align: center;
+  textarea{
+    border-radius: 10px;
+    outline: 0;
+    font-size: 2rem;
+    padding: 2rem;
+    height: 200px;
+  }
+}

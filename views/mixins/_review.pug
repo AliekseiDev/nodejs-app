@@ -1,0 +1,16 @@
+mixin review(review)
+  - review.author = review.author || {}
+  .review__header
+    .review__author
+      div.avatar!= h.icon('user')
+      p= review.author.name || 'DELETED'
+    .review__stars(title=`Rated ${review.rating} our of 5 stars`)
+      = `★`.repeat(review.rating)
+      = `☆`.repeat(5 - review.rating)
+    time.review__time(datetime=review.created)= h.moment(review.created).fromNow()
+  .review__body
+    p= review.text
+  if user && review.author.equals(user._id) 
+    div
+      a.review__remove(href=`/api/v1/reviews/${review._id}/remove`, data-modal-form="#remove-review")
+        != h.icon('garbage')
