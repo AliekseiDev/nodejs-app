@@ -3,6 +3,7 @@ const session = require('express-session');
 const mongoose = require('mongoose');
 const MongoStore = require('connect-mongo')(session);
 const path = require('path');
+const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const passport = require('passport');
@@ -24,6 +25,9 @@ app.set('view engine', 'pug');
 
 // serve static files
 app.use(express.static(path.join(__dirname, 'public')));
+
+// security
+app.use(helmet());
 
 //
 app.use(bodyParser.json());
