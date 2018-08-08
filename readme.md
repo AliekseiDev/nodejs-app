@@ -15,3 +15,11 @@ Auth data for testing
 |User|Debbie Downer|debbie@example.com|debbie|
 |User|Beau|beau@example.com|beau|
 |User|Wes Bos|wes@example.com|wes|
+
+#### List of technologies:
+* SASS
+* webpack
+* pug
+* NodeJS
+* Express
+* MongoDB
